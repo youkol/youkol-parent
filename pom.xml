@@ -4,7 +4,7 @@
 
   <groupId>com.youkol</groupId>
   <artifactId>youkol-parent</artifactId>
-  <version>1.1.1-SNAPSHOT</version>
+  <version>1.0.9-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>youkol-parent</name>
