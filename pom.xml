@@ -4,7 +4,7 @@
 
   <groupId>com.youkol</groupId>
   <artifactId>youkol-parent</artifactId>
-  <version>1.0.9-SNAPSHOT</version>
+  <version>1.1.0</version>
   <packaging>pom</packaging>
 
   <name>youkol-parent</name>
@@ -21,7 +21,7 @@
     <connection>scm:git:git://github.com/youkol/youkol-parent.git</connection>
     <developerConnection>scm:git:git@github.com:youkol/youkol-parent.git</developerConnection>
     <url>https://github.com/youkol/youkol-parent</url>
-    <tag>HEAD</tag>
+    <tag>v1.1.0</tag>
   </scm>
 
   <properties>
