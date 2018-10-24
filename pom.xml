@@ -38,7 +38,6 @@
 
     <!-- Plugin versions -->
     <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
-    <maven-m2e-lifecycle-mapping.version>1.0.0</maven-m2e-lifecycle-mapping.version>
     <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
     <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
     <maven-dependency-plugin.version>3.0.1</maven-dependency-plugin.version>
@@ -130,12 +129,6 @@
   <build>
     <pluginManagement>
       <plugins>
-        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-        <plugin>
-          <groupId>org.eclipse.m2e</groupId>
-          <artifactId>lifecycle-mapping</artifactId>
-          <version>${maven-m2e-lifecycle-mapping.version}</version>
-        </plugin>
         <plugin>
           <groupId>org.projectlombok</groupId>
           <artifactId>lombok-maven-plugin</artifactId>
