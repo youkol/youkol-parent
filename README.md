@@ -1,7 +1,7 @@
 # youkol-parent
 youkol-parent is the youkol parent POM which has to be inherited by all youkol modules.
 
-### Config your maven setting.xml
+### 1. Config your maven setting.xml
 ```
 <servers>
     ...
@@ -14,7 +14,7 @@ youkol-parent is the youkol parent POM which has to be inherited by all youkol m
 </servers>
 ```
 
-### Commands
+### 2. Commands
 ```shell
 # Cleaning a Maven project.
 $ mvn clean
@@ -43,6 +43,6 @@ $ mvn release:perform
 $ mvn release:rollback
 ```
 
-### About author
+### 3. About author
 - Site: https://www.youkol.com
 - Issuse: https://github.com/youkol/youkol-parent/issues
