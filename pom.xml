@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<!--
+
+    Copyright (C) 2016 the original author or authors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+  <!-- direct import spring boot -->
+  <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.4.RELEASE</version>
+    <relativePath /> <!-- lookup parent from repository -->
+	</parent>
 
   <groupId>com.youkol</groupId>
   <artifactId>youkol-parent</artifactId>
-  <version>1.1.1-SNAPSHOT</version>
+  <version>2-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>youkol-parent</name>
+  <description>The parent POM which has to be inherited by all youkol modules</description>
   <url>https://github.com/youkol/youkol-parent</url>
+
+  <inceptionYear>2016</inceptionYear>
+  <organization>
+    <name>youkol.com</name>
+    <url>http://www.youkol.com/</url>
+  </organization>
 
   <licenses>
     <license>
@@ -17,248 +50,387 @@
     </license>
   </licenses>
 
+  <developers>
+    <developer>
+      <name>jackiea</name>
+      <email>jackiea_21@163.com</email>
+      <organizationUrl>https://github.com/youkol</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+8</timezone>
+    </developer>
+  </developers>
+
   <scm>
     <connection>scm:git:git://github.com/youkol/youkol-parent.git</connection>
     <developerConnection>scm:git:git@github.com:youkol/youkol-parent.git</developerConnection>
     <url>https://github.com/youkol/youkol-parent</url>
     <tag>HEAD</tag>
   </scm>
-
-  <properties>
-    <java.version>1.8</java.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
-
-    <lombok.version>1.18.2</lombok.version>
-    <lombok.maven.version>1.18.2.0</lombok.maven.version>
-    <spring.boot.version>2.0.5.RELEASE</spring.boot.version>
-    <guava.version>26.0-jre</guava.version>
-
-    <!-- Plugin versions -->
-    <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
-    <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
-    <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-    <maven-dependency-plugin.version>3.0.1</maven-dependency-plugin.version>
-    <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-    <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
-    <maven-enforcer-plugin.version>3.0.0-M1</maven-enforcer-plugin.version>
-    <maven-failsafe-plugin.version>2.20.1</maven-failsafe-plugin.version>
-    <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
-    <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-    <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
-    <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
-    <maven-site-plugin.version>3.6</maven-site-plugin.version>
-    <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-    <maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>
-    <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-  </properties>
+  <issueManagement>
+    <system>GitHub Issue Management</system>
+    <url>https://github.com/youkol/youkol-parent/issues</url>
+  </issueManagement>
 
   <distributionManagement>
-    <repository>
-      <id>releases</id>
-      <url>https://repo.youkol.com/repository/releases/</url>
-    </repository>
     <snapshotRepository>
-      <id>snapshots</id>
-      <url>https://repo.youkol.com/repository/snapshots/</url>
+      <id>ossrh</id>
+      <name>Maven Snapshots Repository</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <name>Maven Central Staging Repository</name>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
   </distributionManagement>
 
   <repositories>
     <repository>
-      <id>nexus-aliyun</id>
-      <name>Nexus aliyun</name>
-      <!--<layout>default</layout>-->
-      <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
+      <id>aliyun-public</id>
+      <name>aliyun nexus</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
       <releases>
         <enabled>true</enabled>
       </releases>
     </repository>
     <repository>
+      <id>ossrh</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
       <id>youkol-public</id>
       <name>Youkol Public Repositories</name>
       <url>https://repo.youkol.com/repository/maven-public/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
     </repository>
   </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>aliyun-public</id>
+      <name>aliyun nexus</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+  <properties>
+    <java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-        <version>${lombok.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring.boot.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>${guava.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+    <!-- For Maven Plugin -->
+    <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
+    <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+    <maven-nexus-staging-plugin.version>1.6.8</maven-nexus-staging-plugin.version>
+    <license-plugin.version>3.0</license-plugin.version>
+  </properties>
 
   <build>
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>org.projectlombok</groupId>
-          <artifactId>lombok-maven-plugin</artifactId>
-          <version>${lombok.maven.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>build-helper-maven-plugin</artifactId>
-          <version>${build-helper-maven-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>${maven-clean-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>${maven-compiler-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>${maven-deploy-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <version>${maven-dependency-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-eclipse-plugin</artifactId>
-          <version>${maven-eclipse-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-enforcer-plugin</artifactId>
-          <version>${maven-enforcer-plugin.version}</version>
-          <executions>
-            <execution>
-              <id>enforce-rules</id>
-              <goals>
-                <goal>enforce</goal>
-              </goals>
-              <configuration>
-                <rules>
-                  <requireJavaVersion>
-                    <version>[${java.version},)</version>
-                  </requireJavaVersion>
-                </rules>
-                <fail>true</fail>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-failsafe-plugin</artifactId>
-          <version>${maven-failsafe-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>${maven-install-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>${maven-resources-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>${maven-site-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>${maven-surefire-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>${maven-jar-plugin.version}</version>
-          <configuration>
-            <archive>
-              <manifest>
-                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-              </manifest>
-            </archive>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>${maven-javadoc-plugin.version}</version>
-          <executions>
-            <execution>
-              <id>attach-javadocs</id>
-              <goals>
-                <goal>jar</goal>
-              </goals>
-              <inherited>true</inherited>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-source-plugin</artifactId>
-          <version>${maven-source-plugin.version}</version>
-          <executions>
-            <execution>
-              <id>attach-sources</id>
-              <goals>
-                <goal>jar-no-fork</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
           <version>${maven-release-plugin.version}</version>
-          <configuration>
-            <tagNameFormat>v@{project.version}</tagNameFormat>
-          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>${maven-gpg-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.sonatype.plugins</groupId>
+          <artifactId>nexus-staging-maven-plugin</artifactId>
+          <version>${maven-nexus-staging-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>com.mycila</groupId>
+          <artifactId>license-maven-plugin</artifactId>
+          <version>${license-plugin.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>enforce-rules</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireJavaVersion>
+                  <version>[${java.version},)</version>
+                </requireJavaVersion>
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <tagNameFormat>v@{project.version}</tagNameFormat>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <argLine>-Dfile.encoding=UTF-8</argLine>
+          <locale>en_US</locale>
+          <charset>${project.build.sourceEncoding}</charset>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <docencoding>${project.build.sourceEncoding}</docencoding>
+          <additionalparam>-Xdoclint:none</additionalparam>
+        </configuration>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <inherited>true</inherited>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>false</autoReleaseAfterClose>
+          <stagingProgressPauseDurationSeconds>60</stagingProgressPauseDurationSeconds>
+          <stagingProgressTimeoutMinutes>20</stagingProgressTimeoutMinutes>
+          <detectBuildFailures>true</detectBuildFailures>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.mycila</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <configuration>
+          <header>${project.basedir}/license.txt</header>
+          <excludes>
+            <exclude>**/*.ctrl</exclude>
+            <exclude>**/*.dat</exclude>
+            <exclude>**/*.lck</exclude>
+            <exclude>**/*.log</exclude>
+            <exclude>**/*maven-wrapper.properties</exclude>
+            <exclude>**/*MavenWrapperDownloader.java</exclude>
+            <exclude>.factorypath</exclude>
+            <exclude>.gitattributes</exclude>
+            <exclude>**/META-INF/**</exclude>
+            <exclude>**/.editorconfig</exclude>
+            <exclude>mvnw</exclude>
+            <exclude>mvnw.cmd</exclude>
+            <exclude>ICLA</exclude>
+            <exclude>LICENSE</exclude>
+            <exclude>KEYS</exclude>
+            <exclude>NOTICE</exclude>
+          </excludes>
+          <mapping>
+            <xml.vm>XML_STYLE</xml.vm>
+          </mapping>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>format</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+
+    <resources>
+      <resource>
+        <directory>${project.basedir}/src/main/java</directory>
+        <filtering>false</filtering>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+      <resource>
+        <directory>${project.basedir}/src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>${project.basedir}</directory>
+        <targetPath>META-INF</targetPath>
+        <includes>
+          <include>LICENSE</include>
+          <include>NOTICE</include>
+        </includes>
+      </resource>
+    </resources>
   </build>
+
+  <reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<id>default</id>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+      </plugin>
+		</plugins>
+	</reporting>
+
+  <profiles>
+    <profile>
+      <id>license</id>
+      <activation>
+        <file>
+          <!-- project.basedir is invalid in this location, use basedir -->
+          <exists>${basedir}/license.txt</exists>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.mycila</groupId>
+            <artifactId>license-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <phase>compile</phase>
+                <goals>
+                  <goal>format</goal>
+                </goals>
+              </execution>
+          </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <configuration>
+                  <argLine>-Dfile.encoding=UTF-8</argLine>
+                  <locale>en_US</locale>
+                  <charset>${project.build.sourceEncoding}</charset>
+                  <encoding>${project.build.sourceEncoding}</encoding>
+                  <docencoding>${project.build.sourceEncoding}</docencoding>
+                  <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
 </project>

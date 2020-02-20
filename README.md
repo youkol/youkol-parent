@@ -1,2 +1,2 @@
 # youkol-parent
-Project for parent pom for all Youkol projects
+The parent POM which has to be inherited by all youkol modules.
