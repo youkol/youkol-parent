@@ -20,14 +20,6 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-  <!-- direct import spring boot -->
-  <parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.4.RELEASE</version>
-    <relativePath /> <!-- lookup parent from repository -->
-	</parent>
-
   <groupId>com.youkol</groupId>
   <artifactId>youkol-parent</artifactId>
   <version>2-SNAPSHOT</version>
@@ -138,15 +130,101 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
     <!-- For Maven Plugin -->
+    <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+    <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+    <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
+    <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+    <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
+    <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
+    <maven-help-plugin.version>3.2.0</maven-help-plugin.version>
+    <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+    <maven-invoker-plugin.version>3.2.1</maven-invoker-plugin.version>
+    <maven-jar-plugin.version>3.1.2</maven-jar-plugin.version>
+    <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
+    <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+    <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
+    <maven-site-plugin.version>3.8.2</maven-site-plugin.version>
+    <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
+    <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+    <maven-war-plugin.version>3.2.3</maven-war-plugin.version>
     <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
     <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
     <maven-nexus-staging-plugin.version>1.6.8</maven-nexus-staging-plugin.version>
     <license-plugin.version>3.0</license-plugin.version>
+    <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
   </properties>
 
   <build>
     <pluginManagement>
       <plugins>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>${maven-clean-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven-compiler-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${maven-deploy-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>${maven-dependency-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>${maven-enforcer-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>${maven-failsafe-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>${maven-install-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-invoker-plugin</artifactId>
+          <version>${maven-invoker-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-help-plugin</artifactId>
+          <version>${maven-help-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${maven-jar-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${maven-javadoc-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${maven-resources-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>${maven-shade-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>${maven-site-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${maven-source-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${maven-surefire-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>${maven-war-plugin.version}</version>
+        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
@@ -166,6 +244,11 @@
           <groupId>com.mycila</groupId>
           <artifactId>license-maven-plugin</artifactId>
           <version>${license-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>${versions-maven-plugin.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -210,52 +293,6 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <configuration>
-          <argLine>-Dfile.encoding=UTF-8</argLine>
-          <locale>en_US</locale>
-          <charset>${project.build.sourceEncoding}</charset>
-          <encoding>${project.build.sourceEncoding}</encoding>
-          <docencoding>${project.build.sourceEncoding}</docencoding>
-          <additionalparam>-Xdoclint:none</additionalparam>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-            <inherited>true</inherited>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>sign-artifacts</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
         <extensions>true</extensions>
@@ -282,14 +319,14 @@
             <exclude>**/*MavenWrapperDownloader.java</exclude>
             <exclude>.factorypath</exclude>
             <exclude>.gitattributes</exclude>
-            <exclude>**/META-INF/**</exclude>
-            <exclude>**/.editorconfig</exclude>
             <exclude>mvnw</exclude>
             <exclude>mvnw.cmd</exclude>
             <exclude>ICLA</exclude>
             <exclude>LICENSE</exclude>
             <exclude>KEYS</exclude>
             <exclude>NOTICE</exclude>
+            <exclude>**/META-INF/**</exclude>
+            <exclude>**/.editorconfig</exclude>
           </excludes>
           <mapping>
             <xml.vm>XML_STYLE</xml.vm>
