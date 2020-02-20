@@ -29,6 +29,7 @@ $ mvn clean package
 # If license.txt exist, add at the top of your source files a license
 $ mvn clean install
 $ mvn clean install -Plicense
+$ mvn clean install -Prelease
 
 # Deploy the built artifact to the remote repository.
 $ mvn clean deploy -Prelease
