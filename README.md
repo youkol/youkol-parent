@@ -2,7 +2,7 @@
 youkol-parent is the youkol parent POM which has to be inherited by all youkol modules.
 
 ### 1. Config your maven setting.xml
-```
+```xml
 <servers>
     ...
     <server>
