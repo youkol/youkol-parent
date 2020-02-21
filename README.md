@@ -15,7 +15,7 @@ youkol-parent is the youkol parent POM which has to be inherited by all youkol m
 ```
 
 ### 2. Commands
-```shell
+```bash
 # Cleaning a Maven project.
 $ mvn clean
 
