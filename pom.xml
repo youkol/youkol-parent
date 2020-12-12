@@ -453,6 +453,16 @@
                 </configuration>
               </execution>
             </executions>
+            <configuration>
+              <tags>
+                <tag>
+                  <name>date</name>
+                </tag>
+                <tag>
+                  <name>description</name>
+                </tag>
+              </tags>
+            </configuration>
           </plugin>
 
           <plugin>
