@@ -454,6 +454,7 @@
               </execution>
             </executions>
             <configuration>
+              <show>private</show>
               <tags>
                 <tag>
                   <name>date</name>
