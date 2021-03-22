@@ -97,14 +97,6 @@
         <enabled>true</enabled>
       </snapshots>
     </repository>
-    <repository>
-      <id>youkol-public</id>
-      <name>Youkol Public Repositories</name>
-      <url>https://repo.youkol.com/repository/maven-public/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-    </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
