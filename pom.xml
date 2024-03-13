@@ -142,7 +142,7 @@
     <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
     <maven-site-plugin.version>3.12.1</maven-site-plugin.version>
     <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
-    <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
+    <maven-gpg-plugin.version>3.2.0</maven-gpg-plugin.version>
     <maven-nexus-staging-plugin.version>1.6.13</maven-nexus-staging-plugin.version>
     <license-plugin.version>4.3</license-plugin.version>
     <versions-maven-plugin.version>2.16.2</versions-maven-plugin.version>
