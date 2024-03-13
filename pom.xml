@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2016 the original author or authors.
+    Copyright (C) 2016-2024 the original author or authors.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -16,7 +16,9 @@
     limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.youkol</groupId>
@@ -351,38 +353,47 @@
         <groupId>com.mycila</groupId>
         <artifactId>license-maven-plugin</artifactId>
         <configuration>
-          <header>${project.basedir}/license.txt</header>
-          <excludes>
-            <exclude>**/*.ctrl</exclude>
-            <exclude>**/*.dat</exclude>
-            <exclude>**/*.lck</exclude>
-            <exclude>**/*.log</exclude>
-            <exclude>**/*maven-wrapper.properties</exclude>
-            <exclude>**/*MavenWrapperDownloader.java</exclude>
-            <exclude>.factorypath</exclude>
-            <exclude>.gitattributes</exclude>
-            <exclude>lombok.config</exclude>
-            <exclude>mvnw</exclude>
-            <exclude>mvnw.cmd</exclude>
-            <exclude>ICLA</exclude>
-            <exclude>LICENSE</exclude>
-            <exclude>KEYS</exclude>
-            <exclude>NOTICE</exclude>
-            <exclude>**/META-INF/**</exclude>
-            <exclude>**/.editorconfig</exclude>
-          </excludes>
+          <licenseSets>
+            <licenseSet>
+              <header>${project.basedir}/LICENSE_HEADER</header>
+              <excludes>
+                <exclude>**/*.ctrl</exclude>
+                <exclude>**/*.dat</exclude>
+                <exclude>**/*.lck</exclude>
+                <exclude>**/*.log</exclude>
+                <exclude>**/*maven-wrapper.properties</exclude>
+                <exclude>**/*MavenWrapperDownloader.java</exclude>
+                <exclude>.factorypath</exclude>
+                <exclude>.gitattributes</exclude>
+                <exclude>lombok.config</exclude>
+                <exclude>mvnw</exclude>
+                <exclude>mvnw.cmd</exclude>
+                <exclude>ICLA</exclude>
+                <exclude>LICENSE</exclude>
+                <exclude>KEYS</exclude>
+                <exclude>NOTICE</exclude>
+                <exclude>**/META-INF/**</exclude>
+                <exclude>**/.editorconfig</exclude>
+              </excludes>
+            </licenseSet>
+          </licenseSets>
+          <properties>
+            <owner>jackiea</owner>
+            <year>${project.inceptionYear}-2024</year>
+            <email>jackiea_21@163.com</email>
+          </properties>
           <mapping>
             <xml.vm>XML_STYLE</xml.vm>
           </mapping>
+          <prohibitLegacyUse>true</prohibitLegacyUse>
         </configuration>
-        <executions>
-          <execution>
-            <phase>compile</phase>
-            <goals>
-              <goal>format</goal>
-            </goals>
-          </execution>
-        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>com.mycila</groupId>
+            <artifactId>license-maven-plugin-git</artifactId>
+            <version>${license-plugin.version}</version>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
 
@@ -436,7 +447,7 @@
       <activation>
         <file>
           <!-- project.basedir is invalid in this location, use basedir -->
-          <exists>${basedir}/license.txt</exists>
+          <exists>${basedir}/LICENSE_HEADER</exists>
         </file>
       </activation>
       <build>
@@ -446,7 +457,7 @@
             <artifactId>license-maven-plugin</artifactId>
             <executions>
               <execution>
-                <phase>compile</phase>
+                <phase>process-sources</phase>
                 <goals>
                   <goal>format</goal>
                 </goals>
@@ -511,6 +522,16 @@
               </execution>
             </executions>
           </plugin>
+
+          <!-- Skip license plugin during release as maven release is now shallow cloned -->
+          <plugin>
+            <groupId>com.mycila</groupId>
+            <artifactId>license-maven-plugin</artifactId>
+            <configuration>
+              <skip>true</skip>
+            </configuration>
+          </plugin>
+
         </plugins>
       </build>
     </profile>
