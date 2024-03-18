@@ -492,18 +492,14 @@
                 <goals>
                   <goal>jar</goal>
                 </goals>
-                <configuration>
-                  <argLine>-Dfile.encoding=UTF-8</argLine>
-                  <locale>en_US</locale>
-                  <charset>${project.build.sourceEncoding}</charset>
-                  <encoding>${project.build.sourceEncoding}</encoding>
-                  <docencoding>${project.build.sourceEncoding}</docencoding>
-                  <additionalparam>-Xdoclint:none</additionalparam>
-                </configuration>
               </execution>
             </executions>
             <configuration>
-              <show>private</show>
+              <locale>en_US</locale>
+              <charset>${project.build.sourceEncoding}</charset>
+              <encoding>${project.build.sourceEncoding}</encoding>
+              <docencoding>${project.build.sourceEncoding}</docencoding>
+              <doclint>none</doclint>
             </configuration>
           </plugin>
 
