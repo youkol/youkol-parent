@@ -89,11 +89,13 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven.compiler.createMissingPackageInfoClass>false</maven.compiler.createMissingPackageInfoClass>
 
-    <!-- For Maven Plugin -->
     <license-maven.owner>jackiea</license-maven.owner>
     <license-maven.email>jackiea_21@163.com</license-maven.email>
     <license-maven.year>${project.inceptionYear}</license-maven.year>
     <license-maven.header>${project.basedir}/LICENSE_HEADER</license-maven.header>
+
+    <!-- For Maven Plugin -->
+    <flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
     <license-maven-plugin.version>4.5</license-maven-plugin.version>
     <maven-clean-plugin.version>3.3.2</maven-clean-plugin.version>
     <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
@@ -283,6 +285,11 @@
           <groupId>com.mycila</groupId>
           <artifactId>license-maven-plugin</artifactId>
           <version>${license-maven-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>flatten-maven-plugin</artifactId>
+          <version>${flatten-maven-plugin.version}</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
