@@ -157,7 +157,6 @@
   </pluginRepositories>
 
   <build>
-
     <resources>
       <resource>
         <filtering>false</filtering>
@@ -179,6 +178,7 @@
         </includes>
       </resource>
     </resources>
+
     <pluginManagement>
       <plugins>
         <plugin>
