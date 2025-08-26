@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2016-2024 the original author or authors.
+    Copyright (C) 2016-present the original author or authors.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -70,18 +70,19 @@
     <repository>
       <id>ossrh</id>
       <name>Maven Central Staging Repository</name>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      <url>https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/</url>
     </repository>
     <snapshotRepository>
       <id>ossrh</id>
       <name>Maven Snapshots Repository</name>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
     </snapshotRepository>
   </distributionManagement>
 
   <properties>
-    <maven-min.version>3.2.5</maven-min.version>
+    <maven-min.version>3.6.3</maven-min.version>
     <java.version>1.8</java.version>
+
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -91,12 +92,15 @@
 
     <license-maven.owner>jackiea</license-maven.owner>
     <license-maven.email>jackiea_21@163.com</license-maven.email>
-    <license-maven.year>${project.inceptionYear}</license-maven.year>
+    <license-maven.year>${project.inceptionYear}-present</license-maven.year>
     <license-maven.header>${project.basedir}/LICENSE_HEADER</license-maven.header>
+
+    <nexus.serverId>ossrh</nexus.serverId>
+    <nexus.nexusUrl>https://ossrh-staging-api.central.sonatype.com</nexus.nexusUrl>
 
     <!-- For Maven Plugin -->
     <flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
-    <license-maven-plugin.version>4.5</license-maven-plugin.version>
+    <license-maven-plugin.version>4.6</license-maven-plugin.version>
     <maven-clean-plugin.version>3.3.2</maven-clean-plugin.version>
     <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
     <maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
@@ -119,6 +123,7 @@
     <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
     <sortpom-maven-plugin.version>4.0.0</sortpom-maven-plugin.version>
     <versions-maven-plugin.version>2.17.1</versions-maven-plugin.version>
+    <central-publishing-maven-plugin.version>0.8.0</central-publishing-maven-plugin.version>
   </properties>
 
   <repositories>
@@ -139,7 +144,7 @@
       </snapshots>
       <id>ossrh</id>
       <name>Sonatype Nexus Snapshots</name>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
     </repository>
   </repositories>
   <pluginRepositories>
@@ -301,6 +306,11 @@
           <artifactId>sortpom-maven-plugin</artifactId>
           <version>${sortpom-maven-plugin.version}</version>
         </plugin>
+        <plugin>
+          <groupId>org.sonatype.central</groupId>
+          <artifactId>central-publishing-maven-plugin</artifactId>
+          <version>${central-publishing-maven-plugin.version}</version>
+        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -355,8 +365,8 @@
         <artifactId>nexus-staging-maven-plugin</artifactId>
         <extensions>true</extensions>
         <configuration>
-          <serverId>ossrh</serverId>
-          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <serverId>${nexus.serverId}</serverId>
+          <nexusUrl>${nexus.nexusUrl}</nexusUrl>
           <autoReleaseAfterClose>true</autoReleaseAfterClose>
           <stagingProgressPauseDurationSeconds>60</stagingProgressPauseDurationSeconds>
           <stagingProgressTimeoutMinutes>20</stagingProgressTimeoutMinutes>
