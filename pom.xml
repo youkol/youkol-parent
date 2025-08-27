@@ -16,14 +16,12 @@
     limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.youkol</groupId>
   <artifactId>youkol-parent</artifactId>
-  <version>9-SNAPSHOT</version>
+  <version>9</version>
   <packaging>pom</packaging>
 
   <name>youkol-parent</name>
@@ -58,7 +56,7 @@
   <scm>
     <connection>scm:git:git://github.com/youkol/youkol-parent.git</connection>
     <developerConnection>scm:git:git@github.com:youkol/youkol-parent.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>v9</tag>
     <url>https://github.com/youkol/youkol-parent</url>
   </scm>
   <issueManagement>
